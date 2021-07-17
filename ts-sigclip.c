@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "failed to load data, exiting\n");
         return 1;
     }
-    
+
     left = sigclip(data, N, thresh);
 
     for (i=0; i < left; i++)

@@ -36,8 +36,6 @@ void minmax(double *data, int N, double *min, double *max)
         if (data[i] < *min) *min = data[i];
         if (data[i] > *max) *max = data[i];
     }
-
-    return;
 }
 
 double avg(double *data, int N)
@@ -91,8 +89,6 @@ static void reject(double *data, int N, int idx)
         data[i] = data[i+1];
 
     memset(data+N-1, 0, sizeof(double));
-
-    return;
 }
 
 int sigclip(double *data, int N, double thresh)
@@ -116,39 +112,5 @@ int sigclip(double *data, int N, double thresh)
         }
     } while (rej > 0);
 
-    return left;
-}
-
-int sigclip2(double *data, int N, double thresh)
-{
-    int i, rej, left;
-    int *mask;
-    double mean, sd;
-
-    if ((mask=malloc(N*sizeof(int))) == NULL) {
-        return -1;
-    }
-
-    for (i=0; i < N; i++) {
-        mask[i] = 1;
-    }
-
-    left = N;
-
-    do {
-        rej = 0;
-        mean = avg(data, left);
-        sd = sdev(data, left);
-
-        for (i=0; i < left; i++) {
-            if ((data[i] < mean-thresh*sd) || (data[i] > mean+thresh*sd)) {
-                reject(data, left, i);
-                ++rej;
-                --left;
-            }
-        }
-    } while (rej > 0);
-
-    free(mask);
     return left;
 }
