@@ -1,5 +1,6 @@
-CC = gcc
-CCOPTS = -Wall -ansi -pedantic
+CCOPTS := -Wall -Werror -ansi -pedantic
+
+.PHONY: all clean
 
 all: ts-sum ts-avg ts-sdev ts-sigclip ts-hist
 
@@ -22,4 +23,4 @@ ts-hist: ts-hist.c tinystat.o
 	$(CC) $(CCOPTS) tinystat.o ts-hist.c -lm -o ts-hist
 
 clean:
-	rm -rf *.o ts-sum ts-avg ts-sdev ts-sigclip ts-hist
+	$(RM) *.o ts-sum ts-avg ts-sdev ts-sigclip ts-hist
