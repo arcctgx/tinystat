@@ -83,7 +83,7 @@ double sdev(double *data, int N)
     return sdev;
 }
 
-void reject(double *data, int N, int idx)
+static void reject(double *data, int N, int idx)
 {
     int i;
 
