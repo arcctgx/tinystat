@@ -1,6 +1,9 @@
-*.o
-*.a
-*.so
+/.vscode
 
-*.exe
-*.out
+*.o
+
+ts-avg
+ts-hist
+ts-sdev
+ts-sigclip
+ts-sum
